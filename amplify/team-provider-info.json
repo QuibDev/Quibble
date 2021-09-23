@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-quibble-staging-113442-authRole",
+      "UnauthRoleArn": "arn:aws:iam::143612155070:role/amplify-quibble-staging-113442-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::143612155070:role/amplify-quibble-staging-113442-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-quibble-staging-113442-deployment",
+      "UnauthRoleName": "amplify-quibble-staging-113442-unauthRole",
+      "StackName": "amplify-quibble-staging-113442",
+      "StackId": "arn:aws:cloudformation:ap-south-1:143612155070:stack/amplify-quibble-staging-113442/ea076b70-1acf-11ec-bf41-02ac903fd112",
+      "AmplifyAppId": "dc4xdgu057d0n"
+    },
+    "categories": {
+      "auth": {
+        "Quibble": {}
+      }
+    }
+  }
+}
