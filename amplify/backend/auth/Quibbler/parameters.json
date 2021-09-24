@@ -1,8 +1,8 @@
 {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "quibbl0e8a6740",
-    "userPoolName": "Quibble",
+    "resourceNameTruncated": "quibblc0d1280c",
+    "userPoolName": "Quibbler",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -25,10 +25,10 @@
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "Quibbl0e8a6740_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "Quibblc0d1280c_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "0e8a6740",
-    "resourceName": "Quibble",
+    "sharedId": "c0d1280c",
+    "resourceName": "Quibbler",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -53,5 +53,23 @@
     "thirdPartyAuth": false,
     "authProviders": [],
     "usernameCaseSensitive": false,
-    "dependsOn": []
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "QuibblerPostConfirmation",
+            "triggerProvider": "Cognito",
+            "attributes": [
+                "Arn",
+                "Name"
+            ]
+        }
+    ],
+    "triggers": "{\n  \"PostConfirmation\": [\n    \"custom\"\n  ]\n}",
+    "hostedUI": false,
+    "parentStack": {
+        "Ref": "AWS::StackId"
+    },
+    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"PostConfirmation\",\n    \"lambdaFunctionName\": \"QuibblerPostConfirmation\"\n  }\n]",
+    "breakCircularDependency": true,
+    "permissions": []
 }
