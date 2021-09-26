@@ -1,24 +1,25 @@
 {
   "staging": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-quibbler-staging-51331-authRole",
-      "UnauthRoleArn": "arn:aws:iam::143612155070:role/amplify-quibbler-staging-51331-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::143612155070:role/amplify-quibbler-staging-51331-authRole",
+      "AuthRoleName": "amplify-quibble-staging-34709-authRole",
+      "UnauthRoleArn": "arn:aws:iam::143612155070:role/amplify-quibble-staging-34709-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::143612155070:role/amplify-quibble-staging-34709-authRole",
       "Region": "ap-south-1",
-      "DeploymentBucketName": "amplify-quibbler-staging-51331-deployment",
-      "UnauthRoleName": "amplify-quibbler-staging-51331-unauthRole",
-      "StackName": "amplify-quibbler-staging-51331",
-      "StackId": "arn:aws:cloudformation:ap-south-1:143612155070:stack/amplify-quibbler-staging-51331/fec14320-1c2c-11ec-8931-0a8f1852746e",
-      "AmplifyAppId": "dudgcfcxhr2hq"
+      "DeploymentBucketName": "amplify-quibble-staging-34709-deployment",
+      "UnauthRoleName": "amplify-quibble-staging-34709-unauthRole",
+      "StackName": "amplify-quibble-staging-34709",
+      "StackId": "arn:aws:cloudformation:ap-south-1:143612155070:stack/amplify-quibble-staging-34709/42cc00a0-1db3-11ec-b2da-0ab0f7cd09cc",
+      "AmplifyAppId": "d25r0quifa4f2r",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-quibble-staging-34709-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "auth": {
-        "Quibbler": {}
+        "Quibble": {}
       },
       "function": {
-        "QuibblerPostConfirmation": {
-          "deploymentBucketName": "amplify-quibbler-staging-51331-deployment",
-          "s3Key": "amplify-builds/QuibblerPostConfirmation-39556864684e64446d67-build.zip"
+        "QuibblePostConfirmation": {
+          "deploymentBucketName": "amplify-quibble-staging-34709-deployment",
+          "s3Key": "amplify-builds/QuibblePostConfirmation-414b2b496b6e4c433266-build.zip"
         }
       }
     }

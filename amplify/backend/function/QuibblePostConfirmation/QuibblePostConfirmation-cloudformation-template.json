@@ -67,12 +67,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "QuibblerPostConfirmation",
+            "QuibblePostConfirmation",
             {
               "Fn::Join": [
                 "",
                 [
-                  "QuibblerPostConfirmation",
+                  "QuibblePostConfirmation",
                   "-",
                   {
                     "Ref": "env"
@@ -122,12 +122,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "QuibblerPostConfirmation",
+            "QuibblePostConfirmation",
             {
               "Fn::Join": [
                 "",
                 [
-                  "QuibblerPostConfirmation",
+                  "QuibblePostConfirmation",
                   "-",
                   {
                     "Ref": "env"

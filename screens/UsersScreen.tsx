@@ -20,15 +20,10 @@ export default function UsersScreen() {
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    const fetchNewUsers = async () => {
-      const AuthUser = await Auth.currentAuthenticatedUser();            
-      (await DataStore.query(User)).filter(User => User.id !== AuthUser.attributes.id);
-      setUsers;
-    }
-    fetchNewUsers();
-  }, [])
+    DataStore.query(User).then(setUsers);
+  }, []);
 
-  console.log(users)
+  console.log(DataStore.query(User));
 
   return (  
     <View style={styles.page}>

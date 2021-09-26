@@ -12,7 +12,7 @@ export default function ChatRoomItem({ chatRoom }) {
   //const [users, setUsers] = useState<User[]>([]); // all users in this chatrooms
   const [user, setUser] = useState<User|null>(null); // the display user  
   const [lastMessage, setLastMessage] = useState<Message|undefined>();
-    
+  const lastMessageTimeStamp = moment(lastMessage?.createdAt).from(moment());
 
   const navigation = useNavigation();  
 
@@ -44,8 +44,6 @@ export default function ChatRoomItem({ chatRoom }) {
   if (!user) {
     return <ActivityIndicator />
   }
-
-  const lastMessageTimeStamp = moment(lastMessage?.createdAt).from(moment());
 
   return (
       <Pressable onPress={onPress} style={styles.container}>

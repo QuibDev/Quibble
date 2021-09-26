@@ -2,7 +2,7 @@
   "providers": [
     "awscloudformation"
   ],
-  "projectName": "Quibbler",
+  "projectName": "Quibble",
   "version": "3.1",
   "frontend": "javascript",
   "javascript": {

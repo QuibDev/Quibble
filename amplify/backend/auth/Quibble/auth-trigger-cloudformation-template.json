@@ -11,10 +11,10 @@
     "userpoolArn": {
       "Type": "String"
     },
-    "functionQuibblerPostConfirmationName": {
+    "functionQuibblePostConfirmationName": {
       "Type": "String"
     },
-    "functionQuibblerPostConfirmationArn": {
+    "functionQuibblePostConfirmationArn": {
       "Type": "String"
     }
   },
@@ -34,7 +34,7 @@
       "Properties": {
         "Action": "lambda:InvokeFunction",
         "FunctionName": {
-          "Ref": "functionQuibblerPostConfirmationName"
+          "Ref": "functionQuibblePostConfirmationName"
         },
         "Principal": "cognito-idp.amazonaws.com",
         "SourceArn": {
@@ -134,9 +134,9 @@
         "lambdaConfig": [
           {
             "triggerType": "PostConfirmation",
-            "lambdaFunctionName": "QuibblerPostConfirmation",
+            "lambdaFunctionName": "QuibblePostConfirmation",
             "lambdaFunctionArn": {
-              "Ref": "functionQuibblerPostConfirmationArn"
+              "Ref": "functionQuibblePostConfirmationArn"
             }
           }
         ]
