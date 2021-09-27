@@ -18,7 +18,7 @@ const ChatRoomHeader = (props) => {
         style={styles.userIcon}>        
         </Image>
   
-        <Text numberOfLines={1} style={styles.headerText}>{props.children}</Text>      
+        <Text numberOfLines={1} style={styles.headerText}>Elon</Text>      
   
         <View style={styles.iconRow}>        
             <FontAwesome5 name="video" size={20} color={Constants.black} style={styles.headerIcon}/>

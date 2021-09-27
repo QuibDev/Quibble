@@ -20,7 +20,7 @@ export default function HomeScreen() {
   const [chatRooms, setChatRooms] = useState<ChatRoom[]>([]);
 
 
-  /*useEffect(() => {
+  useEffect(() => {
     const fetchChatRooms = async () => {
 
       const userData = await Auth.currentAuthenticatedUser();
@@ -28,26 +28,17 @@ export default function HomeScreen() {
       const chatRooms = (await DataStore.query(ChatRoomUser))
         .filter(chatRoomUser => chatRoomUser.user.id === userData.attributes.sub)      
         .map(chatRoomUser => chatRoomUser.chatroom);
+        
       setChatRooms(chatRooms);          
     };
     fetchChatRooms();
-  }, []); */
+  }, []); 
 
-  useEffect(() => {
-
-    const fetchChatRooms = async () => {
-      const user = await Auth.currentAuthenticatedUser();
-      const subscription = DataStore.observe(user.attributes.chatrooms).subscribe(ChatRoom => {
-        console.log(ChatRoom.model, ChatRoom.opType, ChatRoom.element);
-        setChatRooms(ChatRoom.element);
-      });
-      return () => subscription.unsubscribe();
-    }
-
-    fetchChatRooms();
-  }, []);
+  
 
   const navigation = useNavigation();
+
+  console.log("\nChatrooms Fetched: ", chatRooms);
 
   return (  
     <View style={styles.page}>

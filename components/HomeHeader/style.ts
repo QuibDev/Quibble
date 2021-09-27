@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
       color: Constants.black,
       fontWeight: 'bold',    
       textAlign: 'center',
-      flex: 1,
-      marginLeft: 70,
+      //flex: 1,
+      marginLeft: 90,
     },  
   
     userIcon: {
