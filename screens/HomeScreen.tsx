@@ -38,7 +38,7 @@ export default function HomeScreen() {
 
   const navigation = useNavigation();
 
-  console.log("\nChatrooms Fetched: ", chatRooms);
+  //console.log("\nChatrooms Fetched: ", chatRooms);
 
   return (  
     <View style={styles.page}>
