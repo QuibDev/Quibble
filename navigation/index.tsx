@@ -42,10 +42,10 @@ function RootNavigator() {
       <Stack.Screen 
       name="ChatRoom" 
       component={ChatRoomScreen} 
-      options={{ 
-        headerTitle: ChatRoomHeader, 
+      options={({route}) => ({ 
+        headerTitle: () => <ChatRoomHeader id = {route.params?.id} />, 
         headerBackTitleVisible: false,
-      }}
+      })}
       />
 
       <Stack.Screen 

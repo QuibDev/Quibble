@@ -12,7 +12,6 @@ const ChatRoomHeader = ({ id, children }) => {
  
     const {width} = useWindowDimensions();
     const [user, setUser] = useState<User|null>(null);
-    //width = width-20;
 
     useEffect(() => {
       if (!id) {
@@ -34,8 +33,7 @@ const ChatRoomHeader = ({ id, children }) => {
       fetchUsers();
     }, []);
 
-    console.log("User fetched: ",user);
- 
+    
     return (
       <View {...{width}} style={styles.root}>
   
