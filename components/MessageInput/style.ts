@@ -6,9 +6,15 @@ import Constants from '../../constants/Constants';
 const styles = StyleSheet.create({
 
     root: {
-        flexDirection: 'row',
         padding: 10,
-        alignItems: 'center'
+    },
+
+    row: {
+        flexDirection: "row",
+    },
+
+    column: {
+        flexDirection: "column",
     },
 
     inputContainer: {

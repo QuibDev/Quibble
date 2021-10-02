@@ -1,18 +1,20 @@
-import { 
-    Feather, 
-    Ionicons, 
-    MaterialCommunityIcons, 
-    SimpleLineIcons } from '@expo/vector-icons';
+import {
+    Feather,
+    Ionicons,
+    MaterialCommunityIcons,
+    SimpleLineIcons
+} from '@expo/vector-icons';
 
 import React, { useState } from 'react';
 
 import {
-    Text, 
-    View, 
-    TextInput, 
-    Pressable, 
-    KeyboardAvoidingView, 
-    Platform } from 'react-native';
+    Text,
+    View,
+    TextInput,
+    Pressable,
+    KeyboardAvoidingView,
+    Platform
+} from 'react-native';
 
 import Constants from '../../constants/Constants';
 import styles from '../MessageInput/style';
@@ -20,12 +22,18 @@ import { DataStore } from '@aws-amplify/datastore';
 import { Messages as Message } from '../../src/models';
 import { Auth } from 'aws-amplify';
 import { ChatRoom } from '../../src/models';
+import { CurrentRenderContext } from '@react-navigation/core';
+
+// emojiSelector
+import EmojiSelector from 'react-native-emoji-selector';
+
 
 
 const MessageInput = ({ chatRoom }) => {
 
     const [message, setMessage] = useState('');
-    
+    const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
+
 
     const sendMessage = async () => {
         // send message
@@ -37,7 +45,7 @@ const MessageInput = ({ chatRoom }) => {
         }))
 
         updateLastMessage(newMessage);
-        setMessage('');        
+        resetFields();
     }
 
     const updateLastMessage = async (newMessage) => {
@@ -53,37 +61,69 @@ const MessageInput = ({ chatRoom }) => {
 
     const onPress = () => {
         if (message) {
-            sendMessage();            
+            sendMessage();
         }
         else {
             onPlusClicked();
         }
     }
 
+    const resetFields = () => {
+        setMessage("");
+        setIsEmojiPickerOpen(false);
+        //setImage(null);
+        //setProgress(0);
+        //setSoundURI(null);
+    };
+
     return (
-        <KeyboardAvoidingView 
-        style={styles.root} 
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        keyboardVerticalOffset = {100}
+        <KeyboardAvoidingView
+            style={[styles.root, { height: isEmojiPickerOpen ? "50%" : "auto" }]}
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            keyboardVerticalOffset={100}
         >
-            <View style={styles.inputContainer}>
-                <SimpleLineIcons name="emotsmile" size={24} color={Constants.messageInputIcon} style={styles.icon}/>
+            
+            <View style={styles.row}>
+                <View style={styles.inputContainer}>
+                    <Pressable
+                        onPress={() =>
+                            setIsEmojiPickerOpen((currentValue) => !currentValue)
+                        }
+                    >
+                        <SimpleLineIcons
+                            name="emotsmile"
+                            size={24}
+                            color={Constants.messageInputIcon}
+                            style={styles.icon}
+                        />
+                    </Pressable>
 
-                <TextInput 
-                style={styles.input}
-                value={message}
-                onChangeText={setMessage}
-                placeholder="Type to send a message..."
+                    <TextInput
+                        style={styles.input}
+                        value={message}
+                        onChangeText={setMessage}
+                        placeholder="Type to send a message..."
 
-                />
+                    />
 
 
-                <Feather name="camera" size={24} color={Constants.messageInputIcon} style={styles.icon}/>
-                <MaterialCommunityIcons name="microphone-outline" size={24} color={Constants.messageInputIcon} style={styles.icon}/>
+                    <Feather name="camera" size={24} color={Constants.messageInputIcon} style={styles.icon} />
+                    <MaterialCommunityIcons name="microphone-outline" size={24} color={Constants.messageInputIcon} style={styles.icon} />
+                </View>
+
+                <Pressable onPress={onPress} style={styles.buttonContainer}>
+                    {message ? <Ionicons name="send" size={18} color={Constants.white} /> : <MaterialCommunityIcons name="plus" size={24} color={Constants.white} style={styles.buttonIcon} />}
+                </Pressable>
             </View>
-            <Pressable onPress={onPress} style={styles.buttonContainer}>
-                {message ? <Ionicons name="send" size={18} color={Constants.white}/> :<MaterialCommunityIcons name="plus" size={24} color={Constants.white} style={styles.buttonIcon}/>}
-            </Pressable>
+
+            {isEmojiPickerOpen && (
+                <EmojiSelector
+                    onEmojiSelected={(emoji) =>
+                        setMessage((currentMessage) => currentMessage + emoji)
+                    }
+                    columns={8}
+                />
+            )}
         </KeyboardAvoidingView>
     )
 }
