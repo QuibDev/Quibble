@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
 
     statusIcon: {
         padding: 10,
+        margin: 10,
     },
 
 

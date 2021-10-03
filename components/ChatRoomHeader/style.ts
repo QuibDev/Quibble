@@ -14,19 +14,29 @@ const styles = StyleSheet.create({
       backgroundColor: Constants.white,
       flex: 1,
     },
-  
-    headerText: {
-      fontSize: 24,
-      color: Constants.black,
-      fontWeight: 'bold',    
-      marginLeft: 10,
+
+    UserDetails: {
       flex: 1,
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      marginLeft: 10,
+    },
+  
+    userName: {
+      fontSize: 20,
+      color: Constants.black,
+      fontWeight: 'bold',          
     },  
+
+    UserStatus: {
+      fontSize: 12,
+      color: Constants.grey
+    },
   
     userIcon: {
-      width: 30, 
-      height: 30,
-      borderRadius: 30,
+      width: 36, 
+      height: 36,
+      borderRadius: 36,
     },
   
     iconRow: {

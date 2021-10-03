@@ -34,7 +34,6 @@ const MessageInput = ({ chatRoom }) => {
     const [message, setMessage] = useState('');
     const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
 
-
     const sendMessage = async () => {
         // send message
         const user = await Auth.currentAuthenticatedUser();
@@ -42,7 +41,7 @@ const MessageInput = ({ chatRoom }) => {
             content: message,
             userID: user.attributes.sub,
             chatroomID: chatRoom.id,
-            
+            status: "SENT",
         }))
 
         updateLastMessage(newMessage);

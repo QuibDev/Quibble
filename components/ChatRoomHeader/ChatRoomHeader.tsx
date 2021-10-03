@@ -6,6 +6,7 @@ import Constants from '../../constants/Constants';
 import { DataStore } from '@aws-amplify/datastore';
 import { ChatRoomUser, User } from '../../src/models';
 import Auth from '@aws-amplify/auth';
+import moment from 'moment';
 
 
 const ChatRoomHeader = ({ id, children }) => {
@@ -33,6 +34,22 @@ const ChatRoomHeader = ({ id, children }) => {
       fetchUsers();
     }, []);
 
+    const getLastOnelinText = () => {
+
+      if (!user?.lastOnlineAt){
+        return null;
+      }
+
+      // if lastOnline < 5 mins ago, show him online
+      const lastOnlineDiffMs = moment().diff(user?.lastOnlineAt);
+      const IdleInterval = 5*60*1000 // 5 minutes in ms
+      if (lastOnlineDiffMs < IdleInterval ) {
+        return "Online"
+      } else {
+        return `Last seen ${moment(user.lastOnlineAt).fromNow()} ago`;
+      }
+    } 
+
     
     return (
       <View {...{width}} style={styles.root}>
@@ -41,8 +58,12 @@ const ChatRoomHeader = ({ id, children }) => {
         source={{uri: user?.ImageUri}}      
         style={styles.userIcon}>        
         </Image>
-  
-        <Text numberOfLines={1} style={styles.headerText}>{user?.name}</Text>
+
+        <View style={styles.UserDetails}>
+          <Text numberOfLines={1} style={styles.userName}>{user?.name}</Text>
+          <Text style={styles.UserStatus}> {getLastOnelinText()}</Text>
+        </View>
+
   
         <View style={styles.iconRow}>        
             <FontAwesome5 name="video" size={20} color={Constants.black} style={styles.headerIcon}/>
