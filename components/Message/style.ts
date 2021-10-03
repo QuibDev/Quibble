@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
         margin: 10,
         borderRadius: 10,
         maxWidth: '75%',
+        flexDirection: 'row'
     },
 
     rightContainer: {
@@ -21,11 +22,24 @@ const styles = StyleSheet.create({
         margin: 10,
         borderRadius: 10,
         maxWidth: '75%',
+        flexDirection: 'row'
+    },
+
+    row: {
+        flexDirection: 'row'
+    },
+
+    column: {
+        flexDirection: 'column'
     },
 
     text: {
         color: Constants.white,        
         backgroundColor: Constants.red,
+    },
+
+    statusIcon: {
+        padding: 10,
     },
 
 

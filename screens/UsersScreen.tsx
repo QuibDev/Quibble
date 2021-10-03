@@ -23,7 +23,7 @@ export default function UsersScreen() {
     DataStore.query(User).then(setUsers);
   }, []);
 
-  console.log(DataStore.query(User));
+  //console.log(DataStore.query(User));
 
   return (  
     <View style={styles.page}>
