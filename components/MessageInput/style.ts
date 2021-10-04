@@ -1,5 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { withSafeAreaInsets } from 'react-native-safe-area-context';
+import { StyleSheet } from 'react-native';
 import Constants from '../../constants/Constants';
 
 
@@ -52,6 +51,25 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
 
+    },
+
+    messageReplyContainer: {
+        backgroundColor: Constants.lightgrey,
+        flexDirection: 'row',
+        padding: 5,
+        paddingHorizontal: 2,        
+        paddingRight: 10,
+        borderRadius: 15,
+        marginBottom: 10,
+        borderLeftColor: Constants.grey,
+        borderLeftWidth: 7,
+        borderTopLeftRadius: 10,
+        alignItems: 'flex-start'
+    },
+
+    ReplyContainerContent: {
+        flex: 1,
+        alignItems: 'flex-start'
     },
 })
 

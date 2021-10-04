@@ -1,10 +1,13 @@
 export default{
     blue: '#3777f0',
+    lightBlue: '#4f9eff',
+    darkBlue: '#1a61b8',
     lightgrey: 'lightgrey',    
     messageInputBackground: '#f2f2f2',
     messageInputBorder: '#dedede',
     messageInputIcon: '#595959',
     grey: 'grey',
+    darkGrey: '#858786',
     white: 'white',
     offWhite: '#f8f8ff',
     black: 'black',

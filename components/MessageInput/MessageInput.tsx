@@ -1,4 +1,5 @@
 import {
+    AntDesign,
     Feather,
     Ionicons,
     MaterialCommunityIcons,
@@ -23,13 +24,14 @@ import { Messages as Message } from '../../src/models';
 import { Auth } from 'aws-amplify';
 import { ChatRoom } from '../../src/models';
 import { CurrentRenderContext } from '@react-navigation/core';
+import MessageComponent from '../Message';
 
 // emojiSelector
 import EmojiSelector from 'react-native-emoji-selector';
 
 
 
-const MessageInput = ({ chatRoom }) => {
+const MessageInput = ({ chatRoom, messageReplyTo, removeMessageReplyTo }) => {
 
     const [message, setMessage] = useState('');
     const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
@@ -42,6 +44,7 @@ const MessageInput = ({ chatRoom }) => {
             userID: user.attributes.sub,
             chatroomID: chatRoom.id,
             status: "SENT",
+            replyToMessageID: messageReplyTo?.id,
         }))
 
         updateLastMessage(newMessage);
@@ -49,11 +52,13 @@ const MessageInput = ({ chatRoom }) => {
     }
 
     const updateLastMessage = async (newMessage) => {
-        DataStore.save(ChatRoom.copyOf(chatRoom, updatedChatRoom => {
-            updatedChatRoom.LastMessage = newMessage;
-        }))
+        DataStore.save(
+            ChatRoom.copyOf(chatRoom, (updatedChatRoom) => {
+                updatedChatRoom.LastMessage = newMessage;
+        })
+    );
 
-    }
+    };
 
     const onPlusClicked = () => {
         console.warn('On plus clicked');
@@ -71,6 +76,7 @@ const MessageInput = ({ chatRoom }) => {
     const resetFields = () => {
         setMessage("");
         setIsEmojiPickerOpen(false);
+        removeMessageReplyTo();
         //setImage(null);
         //setProgress(0);
         //setSoundURI(null);
@@ -82,6 +88,28 @@ const MessageInput = ({ chatRoom }) => {
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             keyboardVerticalOffset={100}
         >
+
+            {messageReplyTo && (
+                <View style={styles.messageReplyContainer}>
+
+                    <View style={styles.ReplyContainerContent}>
+                        <Text style={{marginLeft: 10, fontSize: 20}}>Reply: to</Text>
+                        <MessageComponent message={messageReplyTo} />                    
+                    </View>
+
+                    <Pressable onPress ={() => removeMessageReplyTo()}>
+                        <AntDesign
+                            name= "close"
+                            size = {24}
+                            color = "black"
+                            style = {{margin: 5}}
+                        />
+                    </Pressable>
+
+                </View>
+                
+            )}
+
             
             <View style={styles.row}>
                 <View style={styles.inputContainer}>
